@@ -1,0 +1,43 @@
+[[handler]]
+
+name = "DB"
+class = "Sqlite"
+file = "/tmp/endpoint.db"
+table = "requests"
+
+
+[[handler]]
+
+name = "LOG"
+class = "Log"
+file = "/tmp/endpoint.log"
+
+
+[[handler]]
+
+name = "JSON"
+class = "JsonLog"
+file = "/tmp/endpoint.json"
+
+
+[[endpoint]]
+
+path = "/example-db"
+handlers = ["DB", "STDOUT"]
+
+
+[[endpoint]]
+
+path = "/example-json"
+handlers = ["JSON", "STDOUT"]
+
+
+[[endpoint]]
+
+path = "/example-log"
+handlers = ["LOG", "STDOUT"]
+
+
+[default]
+
+handler = "STDOUT"

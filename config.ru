@@ -1,7 +1,3 @@
-require './endpoint.rb'
+require_relative './lib/endpoint/app'
 
-run EndPoint.new(ENV['ENDPOINT_CONFIG'])
-# run ->(env) do
-#   pp env
-#   [200, {"Content-Type" => "text/html"}, ["Hello World!"]]
-# end
+run EndPoint::App.new(ENV['ENDPOINT_CONFIG'])
