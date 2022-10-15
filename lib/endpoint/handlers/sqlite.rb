@@ -55,7 +55,7 @@ module EndPoint
         content_type = env['CONTENT_TYPE']
         headers = Hash[env.keys.select{|k| k.start_with?('HTTP_')}.map{|k| [k, env[k]]}]
         body = if !['GET', 'HEAD'].include?(method)
-                 env['rack.input'].read.to_s
+                 env['rack.input'].tap(&:rewind).read.to_s
                end
 
         values = [time, method, path, query_string, remote_addr, content_type, JSON.dump(headers), body]

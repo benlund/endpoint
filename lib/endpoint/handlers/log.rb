@@ -60,7 +60,7 @@ module EndPoint
         io.puts '>source = ' + source.to_s
         io.puts '>content_type = ' + content_type.to_s
         io.puts '>content_length = ' + content_length.to_s
-        io.puts '>rack.input = ' + env['rack.input'].read.to_s
+        io.puts '>rack.input = ' + env['rack.input'].tap(&:rewind).read.to_s
         io.puts
       end
 
