@@ -19,7 +19,7 @@ module EndPoint
       method = env['REQUEST_METHOD']
       path = env['REQUEST_PATH']
 
-      ## todo nake sure all handlers get same request_time @@
+      ## TODO make sure all handlers get same request_time @@
 
       handlers = @config.handlers_for_path(path)
       handlers.each do |handler|
@@ -45,7 +45,7 @@ module EndPoint
           end
 
         rescue StandardError => e
-          ##EE TODO @@ where?
+          ## TODO should go to stderr
           puts e
           puts e.backtrace
           response_code = 500
